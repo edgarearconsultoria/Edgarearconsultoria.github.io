@@ -1,108 +1,685 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Edgar Augusto | Filmmaker & Criador de Conteúdo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edgar Augusto | Social Media & Videomaker</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Fonte moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0c0d10;
+      --bg-card: #15171e;
+      --bg-card-hover: #1c202a;
+      --accent: #e5a93c;
+      --accent-glow: rgba(229, 169, 60, 0.25);
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1aa;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-  <link rel="stylesheet" href="style.css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .glow-bg {
+      position: fixed;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(229, 169, 60, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1140px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 0;
+      background: rgba(12, 13, 16, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .btn-nav {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 700 !important;
+      transition: var(--transition);
+    }
+
+    .btn-nav:hover {
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(229, 169, 60, 0.1);
+      border: 1px solid rgba(229, 169, 60, 0.25);
+      border-radius: 20px;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 35px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #0c0d10;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 50px;
+    }
+
+    /* About Cards */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 35px;
+      border-radius: 20px;
+    }
+
+    .about-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* Formação */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .course-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 22px;
+      border-radius: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .course-item:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(229, 169, 60, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .course-icon {
+      background: rgba(229, 169, 60, 0.12);
+      color: var(--accent);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .course-info h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .course-info span {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Projetos & Vídeos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229, 169, 60, 0.4);
+    }
+
+    .project-media {
+      height: 250px;
+      background: #191c25;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-media img {
+      transform: scale(1.05);
+    }
+
+    .project-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(12, 13, 16, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .project-content {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-content h4 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .project-content p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .btn-watch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .btn-watch:hover {
+      gap: 12px;
+      color: #fff;
+    }
+
+    /* Contato */
+    .contact-card {
+      background: linear-gradient(145deg, #161821 0%, #111217 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.3rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 35px;
+      font-size: 1.05rem;
+    }
+
+    .contact-links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .contact-btn i {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    .contact-btn:hover {
+      background: var(--accent);
+      color: #0c0d10;
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .contact-btn:hover i {
+      color: #0c0d10;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .contact-card { padding: 40px 20px; }
+      .contact-links-grid { flex-direction: column; }
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- HERO -->
+  <div class="glow-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">Edgar <span>Augusto</span></a>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato" class="btn-nav">Falar Comigo</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Edgar Augusto</h1>
-    <p>Filmmaker & Criador de Conteúdo</p>
-  </section>
-
-  <!-- SOBRE -->
-  <section class="section">
-    <h2>Sobre</h2>
-    <p>
-      Sou filmmaker e criador de conteúdo, atuando do roteiro à edição final.
-      Produzo vídeos para artistas, marcas e projetos culturais, com foco em
-      estética, ritmo e narrativa voltada para redes sociais.
-    </p>
-  </section>
-
-  
-      <!-- VIDEO HORIZONTAL -->
-      <section class="section">
-  <h2>Vídeos</h2>
-
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/shorts/KUSLBt8cnQ0" target="_blank">
-        Reel institucional
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.youtube.com/shorts/pA6BR8NyoQs" target="_blank">
-        Conteúdo para redes sociais
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.youtube.com/shorts/laV7uIE1O8g" target="_blank">
-        Aftermovie cultural
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.youtube.com/shorts/ltJM8BzleGk" target="_blank">
-        Vídeo promocional
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.youtube.com/shorts/Yfv_GZE4eM0" target="_blank">
-        Conteúdo vertical criativo
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.youtube.com/shorts/SPKUDhv56Yc" target="_blank">
-        Reel para Instagram
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.youtube.com/shorts/ldcrPyJDrv8" target="_blank">
-        Projeto audiovisual
-      </a>
-    </li>
-  </ul>
-</section>
-
-
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge">
+          <i class="fa-solid fa-video"></i> Social Media & Videomaker
+        </div>
+        <h1>Histórias visuais criativas e estratégicas.</h1>
+        <p>
+          Transformo ideias em produções audiovisuais verticais e horizontais de alto impacto, combinando ritmo, estética moderna e estratégias com Inteligência Artificial para redes sociais.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5511964380031" target="_blank" class="btn-primary">
+            <i class="fa-brands fa-whatsapp"></i> Iniciar um Projeto
+          </a>
+          <a href="#projetos" class="btn-secondary">
+            <i class="fa-regular fa-eye"></i> Ver Vídeos & Portfólio
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CONTATO -->
-  <section class="section contato">
-  <h2>Contato</h2>
+  <!-- Sobre / Visão Criativa -->
+  <section id="sobre">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-card">
+          <h3><i class="fa-solid fa-user-astronaut"></i> Sobre Mim</h3>
+          <p>
+            Sou filmmaker e editor de vídeo, especializado em transformar ideias em histórias visuais criativas e estratégicas. Produzo conteúdos verticais e horizontais, com foco em estética, ritmo e impacto visual.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3><i class="fa-solid fa-clapperboard"></i> Estilo Audiovisual</h3>
+          <p>
+            Meu estilo de criação audiovisual reflete minha visão criativa, meu olhar estético e a forma como conto histórias através do vídeo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <a href="https://wa.me/5511964380031" target="_blank">
-    WhatsApp — Atendimento direto
-  </a>
+  <!-- Formação Especializada -->
+  <section id="formacao">
+    <div class="container">
+      <h2 class="section-title">Formação & Qualificação</h2>
+      <p class="section-subtitle">Conhecimento técnico contínuo para entregar autoridade e dinamismo</p>
 
-  <a href="https://www.instagram.com/edgar.filmaai/" target="_blank">
-    Instagram — Portfólio e bastidores
-  </a>
+      <div class="courses-grid">
+        <div class="course-item">
+          <div class="course-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="course-info">
+            <h4>IA para Mídias Sociais</h4>
+            <span>SENAC</span>
+          </div>
+        </div>
 
-  <a href="mailto:edgar.earconsultoria@gmail.com">
-    Email — Propostas e parcerias
-  </a>
-</section>
+        <div class="course-item">
+          <div class="course-icon"><i class="fa-solid fa-film"></i></div>
+          <div class="course-info">
+            <h4>Edição de Vídeos</h4>
+            <span>SENAC</span>
+          </div>
+        </div>
 
+        <div class="course-item">
+          <div class="course-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div class="course-info">
+            <h4>Fotografia Comercial com Celular</h4>
+            <span>SENAC</span>
+          </div>
+        </div>
 
+        <div class="course-item">
+          <div class="course-icon"><i class="fa-solid fa-camera"></i></div>
+          <div class="course-info">
+            <h4>Fotografia para Redes Sociais</h4>
+            <span>SENAC</span>
+          </div>
+        </div>
+
+        <div class="course-item">
+          <div class="course-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="course-info">
+            <h4>Marketing de Conteúdo em Redes com IA</h4>
+            <span>SENAC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meus Projetos / Vídeos Reais -->
+  <section id="projetos">
+    <div class="container">
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <p class="section-subtitle">Amostras de produções audiovisuais, dinamismo e narrativa visual</p>
+
+      <div class="projects-grid">
+        <!-- Projeto Barbearia -->
+        <div class="project-card">
+          <div class="project-media">
+            <span class="project-badge">Comercial & Lifestyle</span>
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Corte e Estilo Masculino">
+          </div>
+          <div class="project-content">
+            <h4>Produção Comercial Barbearia</h4>
+            <p>Captação dinâmica focada em cortes, detalhes, texturas e ambiente com visual refinado para redes sociais.</p>
+            <a href="https://www.youtube.com/shorts/wF1j6_OuQ6I" target="_blank" class="btn-watch">
+              Assistir Short <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Projeto Música / Samba -->
+        <div class="project-card">
+          <div class="project-media">
+            <span class="project-badge">Cultura & Eventos</span>
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Instrumento Musical / Evento">
+          </div>
+          <div class="project-content">
+            <h4>Música & Eventos Ao Vivo</h4>
+            <p>Cobertura cinematográfica ressaltando instrumentos, ritmos e a energia viva do evento.</p>
+            <a href="https://youtube.com/shorts/pA6BR8NyoQs?si=BLVw2m3yCs7SlzkJ" target="_blank" class="btn-watch">
+              Assistir Short <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Projeto Vídeo Criativo / Reels -->
+        <div class="project-card">
+          <div class="project-media">
+            <span class="project-badge">Reels & Formato Vertical</span>
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Edição e Produção Audiovisual">
+          </div>
+          <div class="project-content">
+            <h4>Narrativas & Conteúdo Rápido</h4>
+            <p>Edições rápidas e estruturadas para retenção de audiência no Instagram e TikTok.</p>
+            <a href="https://www.youtube.com/shorts/DMWAb3KyC1o" target="_blank" class="btn-watch">
+              Assistir Short <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Vamos criar seu próximo projeto?</h2>
+        <p>Clique abaixo para solicitar uma proposta comercial ou tirar dúvidas diretamente comigo.</p>
+
+        <div class="contact-links-grid">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5511964380031" target="_blank" class="contact-btn">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>(11) 96438-0031</span>
+          </a>
+
+          <!-- Email configurado com assunto pronto sobre o site -->
+          <a href="mailto:edgar.earconsultoria@gmail.com?subject=Contato%20via%20Site%20Portfolio&body=Olá%20Edgar,%20vi%20seu%20portfolio%20online%20e%20gostaria%20de%20um%20orçamento." class="contact-btn">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Enviar E-mail</span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/edgar.filmaai/" target="_blank" class="contact-btn">
+            <i class="fa-brands fa-instagram"></i>
+            <span>@edgar.filmaai</span>
+          </a>
+
+          <!-- Link do Site no GitHub -->
+          <a href="https://edgarearconsultoria.github.io" target="_blank" class="contact-btn">
+            <i class="fa-solid fa-globe"></i>
+            <span>edgarearconsultoria.github.io</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    © 2026 — Edgar Augusto
+    <div class="container">
+      <p>&copy; Edgar Augusto &bull; Social Media & Videomaker. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
 </body>
